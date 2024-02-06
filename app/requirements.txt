@@ -134,7 +134,6 @@ python-magic==0.4.27
 python-multipart==0.0.7
 python-pptx==0.6.23
 pytz==2024.1
-pywin32==306
 PyYAML==6.0.1
 rapidfuzz==3.6.1
 regex==2023.12.25
@@ -169,6 +168,7 @@ unstructured-inference==0.7.23
 unstructured.pytesseract==0.3.12
 urllib3==2.2.0
 uvicorn==0.27.0.post1
+waitress==3.0.0
 watchfiles==0.21.0
 websocket-client==1.7.0
 websockets==12.0
