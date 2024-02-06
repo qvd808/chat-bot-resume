@@ -1,9 +1,0 @@
-openai
-tiktoken
-onnxruntime==1.14.1
-langchain
-chromadb==0.4.15
-pypdf
-unstructured[local-inference]
-flask
-waitress

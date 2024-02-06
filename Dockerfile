@@ -1,12 +1,14 @@
-FROM pytorch/pytorch:latest
-COPY . /app
-WORKDIR /app
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y cmake gcc g++ python3-dev musl-dev libgl1-mesa-glx libglib2.0-0 libsm6 libxrender1 libxext6
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-RUN pip freeze > test.txt
-ENTRYPOINT ["python"]
-CMD ["main.py"]
+FROM node:20-bullseye-slim
 
-EXPOSE 8000
+# Create app directory
+RUN mkdir -p /app
+WORKDIR /app
+COPY . .
+
+RUN apt-get update && apt-get install -y python3-pip
+RUN npm install
+RUN npm run build
+
+EXPOSE 3000
+
+CMD [ "npm", "run", "start"]
