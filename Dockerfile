@@ -1,19 +1,12 @@
-# syntax=docker/dockerfile:1.4
-FROM continuumio/miniconda3
-
-WORKDIR /app
-
-COPY requirements.txt /app
-
-RUN apt update && apt install -y libgl1-mesa-glx
-
-RUN pip install --upgrade pip
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
-
+FROM pytorch/pytorch:latest
 COPY . /app
-
-ENTRYPOINT ["python3"]
-CMD ["app.py"]
+WORKDIR /app
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y cmake gcc g++ python3-dev musl-dev libgl1-mesa-glx libglib2.0-0 libsm6 libxrender1 libxext6
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+RUN pip freeze > test.txt
+ENTRYPOINT ["python"]
+CMD ["main.py"]
 
 EXPOSE 8000
