@@ -4,11 +4,7 @@ FROM continuumio/miniconda3 AS builder
 WORKDIR /app
 
 COPY requirements.txt /app
-# RUN <<EOF
-# apk update
-# apk add git
-# apk add cmake
-# EOF
+
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip3 install -r requirements.txt
 
