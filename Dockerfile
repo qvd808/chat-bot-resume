@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM continuumio/miniconda3 AS builder
+FROM continuumio/miniconda3
 
 WORKDIR /app
 
