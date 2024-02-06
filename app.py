@@ -12,7 +12,7 @@ from langchain.chat_models import ChatOpenAI
 llm = ChatOpenAI(temperature=0,model_name="text-embedding-3-small")
 
 from langchain.document_loaders import DirectoryLoader
-data_dir = "./app/data"
+data_dir = "./data"
 pdf_loader = DirectoryLoader(data_dir, glob="**/*.pdf")
 excel_loader = DirectoryLoader(data_dir, glob="**/*.txt")
 word_loader = DirectoryLoader(data_dir, glob="**/*.docx")
