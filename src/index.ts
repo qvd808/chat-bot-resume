@@ -30,13 +30,13 @@ app.get("/test_wait", async (req: Request, res: Response) => {
   res.send("App is up and running!");
 });
 
-// app.get("/ask", async (req: Request, res: Response) => {
-//   const question = req.query.question as string;
-//   const answer = await qaBot(question);
-//   res.send({
-//     "answer": answer
-//   });
-// });
+app.get("/ask", async (req: Request, res: Response) => {
+  const question = req.query.question as string;
+  const answer = await qaBot(question);
+  res.send({
+    "answer": answer
+  });
+});
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
