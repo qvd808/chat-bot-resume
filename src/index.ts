@@ -30,24 +30,19 @@ app.get("/test_wait", async (req: Request, res: Response) => {
   res.send("App is up and running!");
 });
 
-app.get("/test_param", async (req: Request, res: Response) => {
-  const param = req.query.param;
-  const wait = await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("resolved");
-    }, 3000);
-  });
-  console.log(param);
-  res.send(param);
+app.post("/test_param", async (req: Request<{question: string}>, res: Response) => {
+  const question = req.body.question as string;
+  console.log(question)
+  res.send(question);
 });
 
-// app.get("/ask", async (req: Request, res: Response) => {
-//   const question = req.query.question as string;
-//   const answer = await qaBot(question);
-//   res.send({
-//     "answer": answer
-//   });
-// });
+app.post("/ask", async (req: Request<{question: string}>, res: Response) => {
+  const question = req.body.question as string;
+  const answer = await qaBot(question);
+  res.send({
+    "answer": answer
+  });
+});
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
