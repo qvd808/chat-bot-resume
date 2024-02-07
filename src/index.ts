@@ -17,7 +17,16 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 })
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", async (req: Request, res: Response) => {
+  res.send("App is up and running!");
+});
+
+app.get("/test_wait", async (req: Request, res: Response) => {
+  const wait = await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, 3000);
+  });
   res.send("App is up and running!");
 });
 
